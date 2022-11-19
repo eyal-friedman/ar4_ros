@@ -1,0 +1,550 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="ar4" params="parent prefix *origin">
+
+  <xacro:macro name="ar3_link_ref" params="link_name ">
+    <gazebo reference="${link_name}">
+        <mu1 value="1000"/>
+        <mu2 value="10"/>
+        <kp value="1000000000000000000000000000.0" />
+        <kd value="1000000000000000000000000000.0" />
+        <max_vel>0.0</max_vel>
+        <min_depth>0.001</min_depth>
+    </gazebo>
+  </xacro:macro>
+
+  <material name="gray">
+    <color rgba="0.5 0.5 0.5 1.0"/>
+  </material>
+
+  <link name="${prefix}ar4_base" type="fixed"/>
+
+  <joint name="${prefix}ar4_root_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="world"/>
+      <child link="${prefix}ar4_base"/>
+  </joint>
+
+  <joint name="${prefix}ar4_base_joint" type="fixed">
+      <origin rpy="0.0 0 0" xyz="0 0 0"/>
+      <parent link="${prefix}ar4_base"/>
+      <child link="${prefix}link_0"/>
+  </joint>
+
+  <!-- <link name="${prefix}link_0">
+      <visual>
+        <origin rpy="0.0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://ar4_description/meshes/ar4/visual/base_link.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/lbr_iiwa_14_r820/collision/base_link.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="-0.1 0 0.07" rpy="0 0 0"/>
+        <mass value="5"/>
+        <inertia ixx="0.05"  ixy="0"  ixz="0" iyy="0.06" iyz="0" izz="0.03" />
+      </inertial>
+  </link> -->
+    <link name="${prefix}link_0">
+    <inertial>
+      <origin xyz="-4.6941E-06 0.054174 0.038824" rpy="0 0 0" />
+      <mass value="0.7102" />
+      <inertia
+        ixx="0.0039943"
+        ixy="3.697E-07"
+        ixz="-5.7364E-08"
+        iyy="0.0014946"
+        iyz="-0.00036051"
+        izz="0.0042554" />
+      <!-- <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" /> -->
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ar4_description/meshes/ar4/base_link.STL" /> 
+      </geometry>
+      <material name="">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ar4_description/meshes/ar4/base_link.STL" /> 
+      </geometry>
+    </collision>
+  </link>
+  
+  <!-- <link name="${prefix}link_1">
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/lbr_iiwa_14_r820/visual/link_1.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/lbr_iiwa_14_r820/collision/link_1.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 -0.03 0.12" rpy="0 0 0"/>
+        <mass value="4"/>
+        <inertia ixx="0.1"  ixy="0"  ixz="0" iyy="0.09" iyz="0" izz="0.02" />
+      </inertial>
+  </link> -->
+   <link name="${prefix}link_1">
+    <inertial>
+      <origin xyz="-0.022706 0.04294 -0.12205" rpy="0 0 0" />
+      <mass value="0.88065" />
+      <inertia
+        ixx="0.0034"
+        ixy="0.00042296"
+        ixz="-0.00089231"
+        iyy="0.0041778"
+        iyz="0.0010848"
+        izz="0.0027077" />
+      <!-- <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" /> -->
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ar4_description/meshes/ar4/link_1.STL" /> 
+      </geometry>
+      <material name="">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ar4_description/meshes/ar4/link_1.STL" /> 
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- <link name="${prefix}link_2">
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/lbr_iiwa_14_r820/visual/link_2.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/lbr_iiwa_14_r820/collision/link_2.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0.0003 0.059 0.042" rpy="0 0 0"/>
+        <mass value="4"/>
+        <inertia ixx="0.05"  ixy="0"  ixz="0" iyy="0.018" iyz="0" izz="0.044" />
+      </inertial>
+  </link> -->
+  <link name="${prefix}link_2">
+    <inertial>
+      <origin xyz="0.064818 -0.11189 -0.038671" rpy="0 0 0" />
+      <mass value="0.57738" />
+      <inertia
+        ixx="0.0047312"
+        ixy="0.0022624"
+        ixz="0.00032144"
+        iyy="0.0020836"
+        iyz="-0.00056569"
+        izz="0.0056129" />
+      <!-- <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" /> -->
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ar4_description/meshes/ar4/link_2.STL" /> 
+      </geometry>
+      <material name="">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ar4_description/meshes/ar4/link_2.STL" /> 
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- <link name="${prefix}link_3">
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/lbr_iiwa_14_r820/visual/link_3.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/lbr_iiwa_14_r820/collision/link_3.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0.03 0.13" rpy="0 0 0"/>
+        <mass value="3"/>
+        <inertia ixx="0.08"  ixy="0"  ixz="0" iyy="0.075" iyz="0" izz="0.01" />
+      </inertial>
+  </link> -->
+  <link name="${prefix}link_3">
+    <inertial>
+      <!-- <origin xyz="-0.00029765 -0.023661 -1.04720367321" rpy="0 0 0" /> -->
+      <origin xyz="-0.00029765 -0.023661 -0.0019125" rpy="0 0 0" />
+      <mass value="0.1787" />
+      <inertia
+        ixx="0.0001685"
+        ixy="-2.7713E-05"
+        ixz="5.6885E-06"
+        iyy="0.00012865"
+        iyz="2.9256E-05"
+        izz="0.00020744" />
+      <!-- <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" /> -->
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ar4_description/meshes/ar4/link_3.STL" /> 
+      </geometry>
+      <material name="">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ar4_description/meshes/ar4/link_3.STL" /> 
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- <link name="${prefix}link_4">
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/lbr_iiwa_14_r820/visual/link_4.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/lbr_iiwa_14_r820/collision/link_4.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0.067 0.034" rpy="0 0 0"/>
+        <mass value="2.7"/>
+        <inertia ixx="0.03"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.029" />
+      </inertial>
+  </link> -->
+  <link name="${prefix}link_4">
+    <inertial>
+      <origin xyz="-0.0016798 -0.00057319 -0.074404" rpy="0 0 0" />
+      <mass value="0.34936" />
+      <inertia
+        ixx="0.0030532"
+        ixy="-1.8615E-05"
+        ixz="-7.0047E-05"
+        iyy="0.0031033"
+        iyz="-2.3301E-05"
+        izz="0.00022264" />
+      <!-- <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" /> -->
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ar4_description/meshes/ar4/link_4.STL" /> 
+      </geometry>
+      <material name="">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ar4_description/meshes/ar4/link_4.STL" /> 
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- <link name="${prefix}link_5">
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/lbr_iiwa_14_r820/visual/link_5.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/lbr_iiwa_14_r820/collision/link_5.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0.0001 0.021 0.076" rpy="0 0 0"/>
+        <mass value="1.7"/>
+        <inertia ixx="0.02"  ixy="0"  ixz="0" iyy="0.018" iyz="0" izz="0.005" />
+      </inertial>
+  </link> -->
+  <link name="${prefix}link_5">
+    <inertial>
+      <origin xyz="0.0015066 -1.3102E-05 -0.012585" rpy="0 0 0" />
+      <mass value="0.11562" />
+      <inertia
+        ixx="5.5035E-05"
+        ixy="-1.019E-08"
+        ixz="-2.6243E-06"
+        iyy="8.2921E-05"
+        iyz="1.4437E-08"
+        izz="5.2518E-05" />
+      <!-- <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" /> -->
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ar4_description/meshes/ar4/link_5.STL" /> 
+      </geometry>
+      <material name="">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ar4_description/meshes/ar4/link_5.STL" /> 
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- <link name="${prefix}link_6">
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/lbr_iiwa_14_r820/visual/link_6.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/lbr_iiwa_14_r820/collision/link_6.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0.0006 0.0004" rpy="0 0 0"/>
+        <mass value="1.8"/>
+        <inertia ixx="0.025"  ixy="0"  ixz="0" iyy="0.0136" iyz="0" izz="0.0247" />
+      </inertial>
+  </link> -->
+  <link name="${prefix}link_6">
+    <inertial>
+      <origin xyz="2.9287E-10 -1.6472E-09 0.0091432" rpy="0 0 0" />
+      <mass value="0.013863" />
+      <inertia
+        ixx="1.3596E-06"
+        ixy="3.0585E-13"
+        ixz="5.7102E-14"
+        iyy="1.7157E-06"
+        iyz="6.3369E-09"
+        izz="2.4332E-06" />
+      <!-- <inertia
+        ixx="1.0"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="1.0"
+        iyz="0.0"
+        izz="1.0" /> -->
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ar4_description/meshes/ar4/link_6.STL" /> 
+      </geometry>
+      <material name="">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://ar4_description/meshes/ar4/link_6.STL" /> 
+      </geometry>
+    </collision>
+  </link>
+  
+  <link name="${prefix}tool0"/>
+
+  <!-- <joint name="${prefix}ar4_joint_1" type="revolute">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <parent link="${prefix}link_0"/>
+      <child link="${prefix}link_1"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="320" lower="-2.9668" upper="2.9668" velocity="1.4834"/>
+  </joint> -->
+  <joint name="${prefix}ar4_joint_1" type="revolute">
+    <origin xyz="0 0 0.003445" rpy="${M_PI} 0 0" />
+    <parent link="${prefix}link_0" />
+    <child link="${prefix}link_1" />
+    <axis xyz="0 0 1" />
+    <!-- <limit lower="${-170.0 * pi/180.0}" upper="${170.0 * pi/180.0}" effort="10.0" velocity="1.0"/> -->
+    <!-- Limits from ROS1 -->
+    <limit lower="-2.96706" upper="2.96706" effort="100" velocity="100"/>
+    <joint_properties damping="1.0" friction="0.8"/>
+  </joint>
+
+  <!-- <joint name="${prefix}joint_a2" type="revolute">
+      <origin rpy="0 0 0" xyz="-0.00043624 0 0.36"/>
+      <parent link="${prefix}link_1"/>
+      <child link="${prefix}link_2"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="320" lower="-2.0942" upper="2.0942" velocity="1.4834"/>
+  </joint> -->
+   <joint name="${prefix}ar4_joint_2" type="revolute">
+    <origin xyz="0 0.064146 -0.16608" rpy="${M_PI/2} 0.5236 -${M_PI/2}" />
+    <parent link="${prefix}link_1" />
+    <child link="${prefix}link_2" />
+    <axis xyz="0 0 -1" />
+    <!-- <limit lower="${-129.6 * pi/180.0}" upper="0" effort="10.0" velocity="1.0"/> -->
+    <!-- Limits from ROS! -->
+    <limit lower="${-39.6 / 180.0 * pi}" upper="${pi / 2.0}" effort="100" velocity="100"/>
+    <joint_properties damping="1.0" friction="0.8"/>
+  </joint>
+
+  <!-- <joint name="${prefix}joint_a3" type="revolute">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <parent link="${prefix}link_2"/>
+      <child link="${prefix}link_3"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="176" lower="-2.9668" upper="2.9668" velocity="1.7452"/>
+  </joint> -->
+   <joint name="${prefix}ar4_joint_3" type="revolute">
+    <!-- <origin xyz="0.1525 -0.26414 0" rpy="0 0 -${M_PI/2}" /> -->
+    <!-- origins from ROS1 -->
+    <origin rpy="0 0 -1.04720367321" xyz="0.1525 -0.26414 0"/>
+    <parent link="${prefix}link_2" />
+    <child link="${prefix}link_3" />
+    <axis xyz="0 0 -1" />
+    <!-- <limit lower="${1.0 * pi/180.0}" upper="${143.7 * pi/180.0}" effort="10.0" velocity="1.0"/> -->
+    <!-- Limits from ROS1 -->
+    <limit lower="0.0174533" upper="2.5080381" effort="100" velocity="100"/>
+    <joint_properties damping="1.0" friction="0.8"/>
+  </joint>
+
+  <!-- <joint name="${prefix}joint_a4" type="revolute">
+      <origin rpy="0 0 0" xyz="0.00043624 0 0.42"/>
+      <parent link="${prefix}link_3"/>
+      <child link="${prefix}link_4"/>
+      <axis xyz="0 -1 0"/>
+      <limit effort="176" lower="-2.0942" upper="2.0942" velocity="1.3089"/>
+  </joint> -->
+  <joint name="${prefix}ar4_joint_4" type="revolute">
+    <origin xyz="0 0 0.00675" rpy="${M_PI/2} -1.2554 -${M_PI/2}" />
+    <parent link="${prefix}link_3" />
+    <child link="${prefix}link_4" />
+    <axis xyz="0 0 -1" />
+    <!-- <limit lower="${-164.5 * pi/180.0}" upper="${164.5 * pi/180.0}" effort="10.0" velocity="1.0"/> -->
+    <!-- Limits from ROS1 -->
+    <limit lower="-2.8710666" upper="2.8710666" effort="100" velocity="100"/>
+    <joint_properties damping="1.0" friction="0.8"/>
+  </joint>
+<!-- 
+  <joint name="${prefix}joint_a5" type="revolute">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <parent link="${prefix}link_4"/>
+      <child link="${prefix}link_5"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="110" lower="-2.9668" upper="2.9668" velocity="2.2688"/>
+  </joint> -->
+  <joint name="${prefix}ar4_joint_5" type="revolute">
+    <origin xyz="0 0 -0.22225" rpy="${M_PI} 0 -2.8262" />
+    <parent link="${prefix}link_4" />
+    <child link="${prefix}link_5" />
+    <!-- <axis xyz="-1 0 0" /> -->
+    <!-- Axes from ROS1 -->
+    <axis xyz="1 0 0"/>
+    <!-- <limit lower="${-104.15 * pi/180.0}" upper="${104.15 * pi/180.0}" effort="10.0" velocity="1.0"/> -->
+    <!-- Limits from ROS1 -->
+     <limit lower="-1.81776042" upper="1.81776042" effort="100" velocity="100"/>
+    <joint_properties damping="1.0" friction="0.8"/>
+  </joint>
+
+  <!-- <joint name="${prefix}joint_a6" type="revolute">
+      <origin rpy="0 0 0" xyz="0 0 0.4"/>
+      <parent link="${prefix}link_5"/>
+      <child link="${prefix}link_6"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="40" lower="-2.0942" upper="2.0942" velocity="2.356"/>
+  </joint> -->
+  <joint name="${prefix}ar4_joint_6" type="revolute">
+    <origin xyz="-0.000294 0 0.02117" rpy="0 0 ${M_PI}" />
+    <parent link="${prefix}link_5" />
+    <child link="${prefix}link_6" />
+    <axis xyz="0 0 1" />
+    <!-- <limit lower="${-148.1 * pi/180.0}" upper="${148.1 * pi/180.0}" effort="10.0" velocity="1.0"/> -->
+    <!-- Limits from ROS1 -->
+    <limit lower="-2.5848326" upper="2.5848326" effort="100" velocity="100"/>
+    <joint_properties damping="1.0" friction="0.8"/>
+  </joint>
+
+  <!-- <joint name="${prefix}joint_a7" type="revolute">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <parent link="${prefix}link_6"/>
+      <child link="${prefix}link_7"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="40" lower="-3.0541" upper="3.0541" velocity="2.356"/>
+  </joint> -->
+  <joint name="${prefix}joint_6-tool0" type="fixed">
+      <origin rpy="0 0 0" xyz="0 0 0.01"/>
+      <parent link="${prefix}link_6"/>
+      <child link="${prefix}tool0"/>
+      <axis xyz="0 0 0"/>
+  </joint>
+
+  </xacro:macro>
+</robot>

@@ -1,0 +1,21 @@
+/**:
+  ros__parameters:
+    use_sim_time: True
+    moveit_controller_manager:
+        moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+    moveit_simple_controller_manager:
+      controller_names:
+        - ar4_arm_controller
+
+      ar4_arm_controller:
+        action_ns: follow_joint_trajectory
+        type: FollowJointTrajectory
+        default: true
+        joints:
+          - ar4_joint_1
+          - ar4_joint_2
+          - ar4_joint_3
+          - ar4_joint_4
+          - ar4_joint_5
+          - ar4_joint_6

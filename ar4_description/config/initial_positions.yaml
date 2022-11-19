@@ -1,0 +1,9 @@
+# Default initial positions for the panda arm's ros2_control fake system
+initial_positions:
+  ar4_joint_1: 0.1
+  ar4_joint_2: -0.2
+  ar4_joint_3: 0.1
+  ar4_joint_4: 0.0
+  ar4_joint_5: 0.0
+  ar4_joint_6: 0.2
+
